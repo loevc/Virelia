@@ -1,0 +1,56 @@
+# 创建工作目录
+mkdir -p ~/workspace
+cd ~/workspace
+
+# （可选）配置代理
+vim ~/.bashrc
+source ~/.bashrc
+
+# 验证网络
+curl -I https://www.google.com
+
+# 安装依赖
+sudo apt install -y ca-certificates
+sudo apt install -y gnupg lsb-release
+
+# 添加 NVIDIA Container Toolkit 仓库
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey \
+| sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+
+curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list \
+| sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#' \
+| sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
+# 安装 Toolkit
+sudo apt update
+sudo apt install -y nvidia-container-toolkit
+
+# 配置 Docker Runtime
+sudo nvidia-ctk runtime configure --runtime=docker
+
+# 重启 Docker
+sudo systemctl restart docker
+
+# 验证 Runtime
+sudo docker info | grep -i runtime
+
+# 创建项目
+git clone https://github.com/loevc/Virelia.git
+cd Virelia
+
+# 初始化项目结构
+chmod +x init_project.sh
+./init_project.sh
+
+# Git 配置（首次）
+git config --global user.name ""
+git config --global user.email ""
+
+# 提交
+git add .
+git commit -m "feat: initialize project structure"
+git push origin main
+
+# 创建 Runbook
+mkdir -p docs/runbooks
+touch docs/runbooks/wsl.md

@@ -1,0 +1,147 @@
+# WSL2 Debian 安装 Docker（GPU 支持）
+
+## 1. 创建工作目录
+
+```bash
+mkdir -p ~/workspace
+cd ~/workspace
+```
+
+## 2. 验证网络
+
+```bash
+curl -I https://www.google.com
+```
+
+---
+
+## 3. 配置 APT 代理（如需要）
+
+```bash
+sudo vim /etc/apt/apt.conf.d/80proxy
+```
+
+验证：
+
+```bash
+cat /etc/apt/apt.conf.d/80proxy
+```
+
+更新索引：
+
+```bash
+sudo apt update
+```
+
+---
+
+## 4. 添加 Docker 官方仓库
+
+创建 Keyrings 目录：
+
+```bash
+sudo install -m 0755 -d /etc/apt/keyrings
+```
+
+下载 GPG Key：
+
+```bash
+curl -fsSL https://download.docker.com/linux/debian/gpg \
+| sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+
+添加 Docker Repository：
+
+```bash
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian bookworm stable" \
+| sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+刷新软件源：
+
+```bash
+sudo apt update
+```
+
+---
+
+## 5. 安装 Docker
+
+```bash
+sudo apt install -y \
+docker-ce \
+docker-ce-cli \
+containerd.io \
+docker-buildx-plugin \
+docker-compose-plugin
+```
+
+验证：
+
+```bash
+docker --version
+docker compose version
+```
+
+---
+
+## 6. 配置 Docker Proxy（如需要）
+
+创建目录：
+
+```bash
+sudo mkdir -p /etc/systemd/system/docker.service.d
+```
+
+编辑配置：
+
+```bash
+sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+```
+
+重新加载：
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+验证：
+
+```bash
+systemctl show --property=Environment docker
+```
+
+---
+
+## 7. 验证 Docker
+
+```bash
+sudo docker info
+```
+
+```bash
+sudo docker run hello-world
+```
+
+---
+
+## 8. 验证 GPU Runtime
+
+```bash
+sudo docker run --rm --gpus all \
+nvidia/cuda:12.4.1-base-ubuntu22.04 \
+nvidia-smi
+```
+
+出现 GPU 信息表示配置成功。
+
+---
+
+## 9. 安装 wget（可选）
+
+```bash
+sudo apt install wget
+```
