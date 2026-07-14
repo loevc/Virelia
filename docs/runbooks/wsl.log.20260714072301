@@ -1,0 +1,96 @@
+    1  pwd
+    2  ls
+    3  pwd
+    4  cd ~
+    5  pwd
+    6  ls
+    7  mkdir -p ~/workspace
+    8  cd ~/workspace
+    9  cd ..
+   10  ls
+   11  sudo  
+   12  sudo su 
+   13  nvidia-smi
+   14  pwd
+   15  ls
+   16  which nvidia-smi
+   17  echo $PATH
+   18  sudo echo $PATH
+   19  sudo su - 
+   20  cd ~
+   21  pwd
+   22  sudo -i
+   23  nvidia-smi
+   24  curl -I https://www.google.com
+   25  ls /etc/apt/apt.conf.d/
+   26  sudo vim /etc/apt/apt.conf.d/80proxy
+   27  ls /etc/apt/apt.conf.d/
+   28  cat /etc/apt/apt.conf.d/80proxy 
+   29  sudo apt update
+   30  sudo install -m 0755 -d /etc/apt/keyrings
+   31  pwd
+   32  curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   33  ls
+   34  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+   35  cat /etc/os-release
+   36  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+https://download.docker.com/linux/debian \
+bookworm stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   37  sudo apt update
+   38  sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   39  ps -p 1 -o comm=
+   40  docker --version
+   41  sudo service docker status
+   42  docker run hello-world
+   43  sudo docker run hello-world
+   44  ls /etc/systemd/system
+   45  sudo mkdir -p /etc/systemd/system/docker.service.d
+   46  sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+   47  sudo systemctl daemon-reload
+   48  sudo systemctl restart docker
+   49  systemctl show --property=Environment docker
+   50  systemctl status docker
+   51  docker run hello-world
+   52  sudo docker run hello-world
+   53  docker --version
+   54  docker compose --version
+   55  docker compose versin
+   56  docker compose version
+   57  history 
+   58  docker --version
+   59  docker compose version
+   60  docker info 
+   61  sudo docker info 
+   62  docker run --rm --gpus all nvidia/cuda:12.4.1-base nvidia-smi
+   63  sudo docker run --rm --gpus all nvidia/cuda:12.4.1-base nvidia-smi
+   64  sudo docker run --rm --gpus all nvidia/cuda:12.4.1-base-ubuntu22.04 nvidia-smi
+   65  history 
+   66  code .
+   67  apt  install wget
+   68  sudo apt install wget
+   69  code .
+   70  ll 
+   71  ls -la 
+   72  history 
+   73  ls
+   74  cd workspace/
+   75  ls
+   76  cd Virelia/
+   77  ls
+   78  mkdir -p docker
+   79  mkdir -p docker/ollama
+   80* mkdir -p da
+   81  touch docker/ollama/compose.yml
+   82  touch docker/open-webui/compose.yml
+   83  mkdir -p data/ollama
+   84  mkdir -p data/open-webui
+   85  docker network create ai-network
+   86  sudo docker network create ai-network
+   87  curl -L -o /dev/null https://registry.ollama.ai
+   88  env | grep -i proxy
+   89  curl -x http://192.168.1.10:7897 -I https://registry.ollama.ai
+   90  curl -L -o /dev/null https://registry.ollama.ai/v2/
+   91  curl -x http://192.168.1.10:7897 -L -o /dev/null https://registry.ollama.ai/v2/
+   92  history 
+   93  history > ../../docs/runbooks/wsl.log.20260714072301
+   94  history > docs/runbooks/wsl.log.20260714072301

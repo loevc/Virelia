@@ -1,0 +1,108 @@
+    1  pwd
+    2  ls
+    3  pwd
+    4  cd ~
+    5  pwd
+    6  ls
+    7  mkdir -p ~/workspace
+    8  cd ~/workspace
+    9  cd ..
+   10  ls
+   11  sudo  
+   12  sudo su 
+   13  nvidia-smi
+   14  pwd
+   15  ls
+   16  which nvidia-smi
+   17  echo $PATH
+   18  sudo echo $PATH
+   19  sudo su - 
+   20  cd ~
+   21  ls
+   22  pwd
+   23  vim .bashrc 
+   24  source .bashrc 
+   25  echo $http_proxy
+   26  curl -I www.google.com
+   27  curl -I https://www.google.com
+   28  docker version
+   29  docker --version
+   30  apt install ca-certificates
+   31  sudo apt install ca-certificates
+   32  apt install -y gnupg lsb-release
+   33  sudo apt install -y gnupg lsb-release
+   34  nvidia-smi
+   35  curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+   36  curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#' | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+   37  sudo apt update
+   38  sudo apt install -y nvidia-container-toolkit
+   39  sudo nvidia-ctk runtime configure --runtime=docker
+   40  sudo systemctl restart docker
+   41  docker info | grep -i runtime
+   42  sudo docker info | grep -i runtime
+   43  history 
+   44  nvidia-smi
+   45  code .
+   46  git 
+   47  git clone https://github.com/loevc/Virelia.git
+   48  ls
+   49  rm -rf Virelia/
+   50  cd workspace/
+   51  ls
+   52  ls -la 
+   53  git clone https://github.com/loevc/Virelia.git
+   54  cd Virelia/
+   55  ls
+   56  touch init_project.sh
+   57  vim init_project.sh 
+   58  chmod +x init_project.sh
+   59  ./init_project.sh
+   60  git add .
+   61  ls
+   62  git status
+   63  git commit -m "feat(): initialize project structure [Virelia]"
+   64  git config --global user.email "33386034+loevc@users.noreply.github.com"
+   65  git config --global user.name "loevc"
+   66  git commit -m "feat(): initialize project structure [Virelia]"
+   67  git push origin main
+   68  git pull
+   69  git checkout init/personal-platform
+   70  git status 
+   71  ls
+   72  ls -la
+   73  vim .gitignore 
+   74  vim README.md 
+   75  vim docs/architecture.md 
+   76  vim docs/roadmap.md 
+   77  cat init_project.sh 
+   78  mkdir -p docs/runbooks
+   79  touch docs/runbooks/wsl.log
+   80  vim docs/runbooks/wsl.log 
+   81  history 
+   82  vim docs/runbooks/wsl.log.20260713142100
+   83  vim docs/runbooks/wsl.log.20260713142101
+   84  vim docs/runbooks/wsl.log.20260713142100
+   85  git status 
+   86  git add .
+   87  git status 
+   88  vim docs/runbooks/wsl.log.20260713142100
+   89  vim docker/ollama/compose.yml 
+   90  vim docker/open-webui/compose.yml 
+   91  cd docker/ollama/
+   92  docker compose -f compose.yml up -d
+   93  sudo docker compose -f compose.yml up -d
+   94  docker ps
+   95  sudo docker ps
+   96  cd ../open-webui/
+   97  sudo docker compose -f compose.yml up -d
+   98  docker exec -it ollama bash
+   99  sudo docker exec -it ollama bash
+  100  docker ps 
+  101  sudo docker ps 
+  102  docker exec -it ollama ollama pull qwen3:14b
+  103  sudo docker exec -it ollama ollama pull qwen3:14b
+  104  docker exec -it ollama ollama list
+  105  sudo docker exec -it ollama ollama list
+  106  curl http://localhost:11434/api/tags
+  107  history 
+  108  history > ../../docs/runbooks/wsl.log.20260714072300

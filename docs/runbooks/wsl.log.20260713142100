@@ -54,3 +54,6 @@ git push origin main
 # 创建 Runbook
 mkdir -p docs/runbooks
 touch docs/runbooks/wsl.md
+
+
+ps -p 1 -o comm=
