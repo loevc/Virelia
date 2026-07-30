@@ -1,0 +1,18 @@
+wsl
+sudo docker exec -it ollama ollama list
+
+sudo docker exec -it ollama ollama show qwen3:14b
+
+sudo docker exec -it ollama ollama --version
+sudo docker exec -it ollama ollama pull qwen3-coder:30b
+sudo docker exec -it ollama ollama ps
+sudo docker exec -it ollama ollama pull qwen3.6:35b
+sudo docker exec -it ollama ollama pull gpt-oss:20b
+sudo docker exec -it ollama ollama stop qwen3:14b
+sudo docker exec -it ollama ollama list
+sudo docker exec -it ollama ollama rm gpt-oss:20b
+sudo docker system df
+sudo docker exec -it ollama ollama rm qwen3.6:35b
+sudo docker exec -it ollama ollama rm qwen3-coder:30b
+sudo docker ps -s
+sudo docker exec -it ollama du -sh /root/.ollama

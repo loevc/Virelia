@@ -1,0 +1,82 @@
+sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo systemctl status docker
+
+cd ~/workspace/Virelia/docker
+mkdir vllm
+cd vllm/
+touch .env
+vim .env
+touch docker-compose.yml
+vim docker-compose.yml
+docker compose config
+sudo docker compose up -d
+sudo docker pull vllm/vllm-openai:v0.26.0
+
+curl -I https://registry-1.docker.io/v2/
+curl -x http://192.168.1.10:7890 https://registry-1.docker.io/v2/
+sudo systemctl show docker --property=Environment
+
+sudo docker compose images
+sudo docker images | grep vllm
+sudo docker compose up -d
+sudo docker ps
+sudo docker stats
+sudo docker exec -it vllm nvidia-smi
+sudo docker compose down
+sudo docker exec -it vllm env | grep -i proxy
+curl -x http://192.168.1.10:7890 -I https://huggingface.co
+sudo docker inspect vllm | grep -i proxy
+
+
+
+sudo docker run --rm -it \
+  --network ai-network \
+  -e HTTP_PROXY=http://192.168.1.10:7890 \
+  -e HTTPS_PROXY=http://192.168.1.10:7890 \
+  curlimages/curl \
+  -I https://huggingface.co
+
+
+
+sudo docker run --rm -it \
+  --entrypoint bash \
+  -e HTTP_PROXY=http://192.168.1.10:7890 \
+  -e HTTPS_PROXY=http://192.168.1.10:7890 \
+  -e http_proxy=http://192.168.1.10:7890 \
+  -e https_proxy=http://192.168.1.10:7890 \
+  vllm/vllm-openai:v0.26.0
+
+>>> python3 --version
+>>> python --version
+>>> python3
+>>> import requests \
+	r = requests.get( \
+    	"https://huggingface.co/Qwen/Qwen3-0.6B/resolve/main/config.json" \
+	) \
+	print(r.status_code) 
+
+
+>>> from huggingface_hub import hf_hub_download \
+	hf_hub_download( \
+    	repo_id="Qwen/Qwen3-0.6B", \
+    	filename="config.json" \
+	) 
+
+
+
+sudo docker compose up -d vllm
+
+
+sudo docker run --rm -it \
+--entrypoint bash \
+-v /home/loevc/workspace/Virelia/data/vllm:/root/.cache/huggingface \
+-e HTTP_PROXY=http://192.168.1.10:7890 \
+-e HTTPS_PROXY=http://192.168.1.10:7890 \
+-e http_proxy=http://192.168.1.10:7890 \
+-e https_proxy=http://192.168.1.10:7890 \
+vllm/vllm-openai:v0.26.0
+
+sudo docker inspect vllm | grep NVIDIA
+curl -x http://192.168.1.10:7890 https://huggingface.co

@@ -1,0 +1,10 @@
+curl http://localhost:11434/api/tags
+powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+codex --version
+codex --help
+codex --oss --local-provider ollama -m qwen3:14b
+> /status
+> /model
+type $env:USERPROFILE\.codex\qwen3-coder.config.toml
+codex --profile qwen3-coder --oss --local-provider ollama -m qwen3-coder:30b
+codex --profile ollama-launch
