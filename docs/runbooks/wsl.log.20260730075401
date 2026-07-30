@@ -80,3 +80,14 @@ vllm/vllm-openai:v0.26.0
 
 sudo docker inspect vllm | grep NVIDIA
 curl -x http://192.168.1.10:7890 https://huggingface.co
+
+git config https.proxy "http://192.168.1.10:7890"
+git config http.proxy "http://192.168.1.10:7890"
+
+
+du -sh ../../data/vllm/hub/* | sort -rh
+du -sh ../../data/vllm/xet/* | sort -rh
+
+sudo docker ps -a
+sudo docker rm gracious_lalande
+

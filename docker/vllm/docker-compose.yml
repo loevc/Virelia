@@ -13,6 +13,7 @@ services:
 
       - HTTP_PROXY=http://192.168.1.10:7890
       - HTTPS_PROXY=http://192.168.1.10:7890
+      - ALL_PROXY=http://192.168.1.10:7890
 
       - http_proxy=http://192.168.1.10:7890
       - https_proxy=http://192.168.1.10:7890
@@ -29,7 +30,8 @@ services:
       - "8000:8000"
 
     command:
-      - "Qwen/Qwen3-0.6B"
+      # - "Qwen/Qwen3-0.6B"
+      - "openai/gpt-oss-20b"
       - "--host"
       - "0.0.0.0"
       - "--port"
