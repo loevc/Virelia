@@ -2,3 +2,8 @@ hostname -I
 hostname -i
 
 docker run -d --name mysql8 --restart always -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -v ~/data/mysql8:/var/lib/mysql mysql:8.0.46
+
+# [Warning] Using a password on the command line interface can be insecure.
+docker exec mysql8 mysqldump -uroot -p123456 --default-character-set=utf8mb4 --single-transaction --routines --triggers --events escape_booking > escape_booking_full.sql
+
+cp escape_booking_full.sql /mnt/d/
